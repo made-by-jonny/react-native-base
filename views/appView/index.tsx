@@ -1,21 +1,22 @@
-import React, { useEffect } from "react";
-import { CommonActions } from "@react-navigation/native";
-import { View, Text, TouchableOpacity } from "react-native";
+import React from "react";
+import { View, Text } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import ApplianceStack from "../myAppliances";
-import AddStack from "../addAppliances";
-import Profile from "../profile";
-
+import Profile from "../mainViews/profile";
 import { FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
 import styled from "styled-components/native";
+import Schedule from "../mainViews/schedule";
+import Home from "../mainViews/home";
+import Metrics from "../mainViews/metrics";
+import Learn from "../mainViews/learn";
 
 const Tab = createBottomTabNavigator();
 
 const BottomNav = styled.View`
-  background: #333366;
+  background: #fff;
   align-items: center;
-  height: 100px;
-  padding: 20px 20px;
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
+  padding: 10px;
   display: flex;
   flex-direction: row;
 `;
@@ -26,7 +27,6 @@ const BottomNavItem = styled.TouchableHighlight`
   flex: 1;
   justify-content: center;
   align-items: center;
-  height: 140px;
 `;
 
 function MyTabBar({ state, descriptors, navigation }) {
@@ -79,8 +79,13 @@ function MyTabBar({ state, descriptors, navigation }) {
             style={{ flex: 1 }}
           >
             <>
-              <options.tabBarIcon color={isFocused ? "#99CCCC" : "#ccc"} />
-              <Text style={{ color: isFocused ? "#99CCCC" : "#ccc" }}>
+              <options.tabBarIcon color={isFocused ? "#46b04a" : "#ccc"} />
+              <Text
+                style={{
+                  fontWeight: "bold",
+                  color: isFocused ? "#46b04a" : "#ccc",
+                }}
+              >
                 {label}
               </Text>
             </>
@@ -97,85 +102,66 @@ function App() {
       tabBar={(props) => <MyTabBar {...props} />}
       barStyle={{
         backgroundColor: "#333366",
-        overflow: "visible",
       }}
-      activeColor="#fff"
-      inactiveColor="rgba(255,255,255, 0.5)"
+      activeColor="#46b04a"
+      inactiveColor="#ccc"
     >
       <Tab.Screen
-        name="Appliances"
-        component={ApplianceStack}
+        name="home"
+        component={Home}
         options={{
-          tabBarLabel: "Rooms",
+          tabBarLabel: "Home",
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="home" color={color} size={46} />
+            <MaterialCommunityIcons name="home" color={color} size={28} />
           ),
         }}
       />
       <Tab.Screen
-        name="Add Appliance"
-        component={AddStack}
+        name="schedule"
+        component={Schedule}
         options={{
-          tabBarLabel: "Add",
+          tabBarLabel: "Schedule",
           tabBarIcon: ({ color }) => (
-            <>
-              <View
-                style={{
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backgroundColor: "#99CCCC",
-                  width: 76,
-                  height: 76,
-                  marginTop: -45,
-                  marginBottom: 18,
-                  borderRadius: 100,
-                  zIndex: 1,
-                }}
-              >
-                <FontAwesome5
-                  name="plus"
-                  color={"#333366"}
-                  size={24}
-                  style={{}}
-                />
-              </View>
-              <View
-                style={{
-                  position: "absolute",
-                  overflow: "hidden",
-                  alignItems: "center",
-                  width: 100,
-                  height: 60,
-                  top: 19,
-                  marginBottom: 100,
-                  zIndex: 0,
-                }}
-              >
-                <View
-                  style={{
-                    alignItems: "center",
-                    justifyContent: "center",
-                    backgroundColor: "#F4F4F4",
-                    width: 90,
-                    height: 105,
-                    top: -50,
-                    marginBottom: 20,
-                    borderRadius: 100,
-                    zIndex: 0,
-                  }}
-                />
-              </View>
-            </>
+            <MaterialCommunityIcons
+              name="calendar-month"
+              color={color}
+              size={28}
+            />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="learn"
+        component={Learn}
+        options={{
+          tabBarLabel: "Learn",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="school" color={color} size={28} />
           ),
         }}
       />
       <Tab.Screen
-        name="Profile"
+        name="metrics"
+        component={Metrics}
+        options={{
+          tabBarLabel: "Metrics",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              name="chart-bell-curve-cumulative"
+              color={color}
+              size={28}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="account"
         component={Profile}
         options={{
-          tabBarLabel: "My Profile",
+          tabBarLabel: "Account",
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="account" color={color} size={46} />
+            <MaterialCommunityIcons name="account" color={color} size={28} />
           ),
         }}
       />

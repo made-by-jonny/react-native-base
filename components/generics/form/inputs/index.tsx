@@ -11,10 +11,13 @@ import Label from "../label";
 
 type InputType = {
   onChange?({}): void;
+  secureTextEntry?: boolean;
   variant?: string;
   label: string;
   name: string;
   type: string;
+  email: boolean;
+  required?: boolean;
   minLength?: number;
   informForm?({}): void;
   hideLabel?: boolean;

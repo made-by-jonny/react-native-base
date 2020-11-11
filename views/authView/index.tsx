@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import Login from "../loginView";
-import Register from "../registerView";
+import Login from "./loginView";
+import Register from "./registerView";
 
 const AuthStack = createStackNavigator();
 
