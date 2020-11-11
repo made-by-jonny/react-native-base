@@ -21,14 +21,14 @@ const App = () => {
   useEffect(() => {
     (async () => {
       try {
-        setAuth(true);
+        setAuth(false);
       } catch (e) {
         setAuth(false);
       }
     })();
   }, []);
 
-  if (isAuth === false) {
+  if (isAuth === "loading") {
     return (
       <View style={{ flex: 1 }}>
         <Text>Loading...</Text>

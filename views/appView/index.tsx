@@ -1,8 +1,8 @@
 import React from "react";
 import { View, Text } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Profile from "../mainViews/profile";
 import { FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
+import Profile from "../mainViews/profile";
 import styled from "styled-components/native";
 import Schedule from "../mainViews/schedule";
 import Home from "../mainViews/home";

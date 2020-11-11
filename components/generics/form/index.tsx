@@ -32,7 +32,7 @@ const Form: React.FC<FormType> = ({
   const submit = () => onSubmit(items);
 
   return (
-    <View>
+    <View style={{ alignSelf: "stretch", padding: 20 }}>
       {childrenWithProps}
       <Text>{errorMessage}</Text>
       {hideSubmit === true ? null : (

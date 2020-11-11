@@ -26,7 +26,7 @@ type InputType = {
 };
 
 const InputField: React.FC<InputType> = styled(TextInput)<{ variant: string }>`
-  border-radius: 100px;
+  border-radius: 10px;
   overflow: hidden;
   color: #222;
   padding: 10px;

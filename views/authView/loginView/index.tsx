@@ -1,17 +1,24 @@
 import React, { useEffect } from "react";
-import { View } from "react-native";
+import { View, Text } from "react-native";
 import { connect } from "react-redux";
 import Form from "../../../components/generics/form";
 import Input from "../../../components/generics/form/inputs";
 import { login } from "../../../state/reducers/authentication";
 import { useNavigation } from "@react-navigation/native";
 import { bindActionCreators } from "redux";
+import Link from "../../../components/generics/links";
 
 const Login = (props) => {
   const { login, navigation } = props;
   const navigate = useNavigation();
   return (
-    <View>
+    <View
+      style={{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <Form
         onSubmit={async (data) => {
           try {
@@ -34,6 +41,15 @@ const Login = (props) => {
           minLength={8}
         />
       </Form>
+      <View>
+        <Link
+          onPress={async () => {
+            navigate.push("Register");
+          }}
+        >
+          Don't Have an account? Register Here
+        </Link>
+      </View>
     </View>
   );
 };
