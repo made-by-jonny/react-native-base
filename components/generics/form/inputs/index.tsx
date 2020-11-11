@@ -16,7 +16,7 @@ type InputType = {
   label: string;
   name: string;
   type: string;
-  email: boolean;
+  email?: boolean;
   required?: boolean;
   minLength?: number;
   informForm?({}): void;
