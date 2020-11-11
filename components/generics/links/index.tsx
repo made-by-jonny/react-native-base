@@ -4,6 +4,7 @@ import styled from "styled-components/native";
 
 type LinkType = {
   theme?: any;
+  style?: any;
   variant?: string;
   onPress(): void;
   children: any;
@@ -12,6 +13,7 @@ type LinkType = {
 type LinkTextType = {
   variant?: string;
   theme?: any;
+  style?: any;
 };
 
 const LinkStyle: React.FC<LinkType> = styled(TouchableHighlight)<LinkType>``;
