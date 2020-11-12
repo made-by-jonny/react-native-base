@@ -9,23 +9,7 @@ import rules from "../helpers/validations";
 import styled from "styled-components/native";
 import Label from "../label";
 
-type InputType = {
-  onChange?({}): void;
-  secureTextEntry?: boolean;
-  variant?: string;
-  label: string;
-  name: string;
-  type: string;
-  email?: boolean;
-  required?: boolean;
-  minLength?: number;
-  informForm?({}): void;
-  hideLabel?: boolean;
-  placeholder?: string | undefined;
-  defaultValue?: string;
-};
-
-const InputField: React.FC<InputType> = styled(TextInput)<{ variant: string }>`
+const InputField = styled.TextInput`
   border-radius: 10px;
   overflow: hidden;
   color: #222;
@@ -41,17 +25,17 @@ const InputField: React.FC<InputType> = styled(TextInput)<{ variant: string }>`
   }};
 `;
 
-const validation = (props: any, name: string, value: string) => {
-  return Object.keys(props).reduce((end: { [key: string]: {} }, current) => {
+const validation = (props, name, value) => {
+  return Object.keys(props).reduce((end, current) => {
     if (rules[current] === undefined) return end;
     end[name] = rules[current](props[current], value);
     return end;
   }, {});
 };
 
-const Input: React.FC<InputType> = (props) => {
-  const [isValid, setValidity] = useState<boolean | string>("clean");
-  const [errors, setErrors] = useState<string[] | []>([]);
+const Input = (props) => {
+  const [isValid, setValidity] = useState("clean");
+  const [errors, setErrors] = useState([]);
   const {
     onChange,
     variant,
@@ -65,14 +49,12 @@ const Input: React.FC<InputType> = (props) => {
     defaultValue = "",
   } = props;
 
-  const validate = (e: NativeSyntheticEvent<TextInputChangeEventData>) => {
+  const validate = (e) => {
     const value = e.nativeEvent.text;
     const validateObject = validation({ ...props }, name, value);
-    const validity: string[] = Object.entries(validateObject).map(
-      (item: any) => {
-        if (item !== true) return item[1];
-      }
-    );
+    const validity = Object.entries(validateObject).map((item) => {
+      if (item !== true) return item[1];
+    });
 
     setErrors(validity);
     setValidity(validity.length === 0 ? true : false);
@@ -109,7 +91,7 @@ const Input: React.FC<InputType> = (props) => {
         onChange={validate}
         defaultValue={defaultValue}
       />
-      {(errors as string[]).map((item: string) => (
+      {errors.map((item) => (
         <Text key={item}>{item}</Text>
       ))}
     </>

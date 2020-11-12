@@ -2,21 +2,7 @@ import React from "react";
 import { TouchableHighlight, Text } from "react-native";
 import styled from "styled-components/native";
 
-type ButtonType = {
-  theme?: any;
-  variant?: string;
-  onPress(): void;
-  children: any;
-};
-
-type ButtonTextType = {
-  variant?: string;
-  theme?: any;
-};
-
-const ButtonStyle: React.FC<ButtonType> = styled(TouchableHighlight)<
-  ButtonType
->`
+const ButtonStyle = styled.TouchableHighlight`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,13 +13,13 @@ const ButtonStyle: React.FC<ButtonType> = styled(TouchableHighlight)<
   margin-bottom: 10px;
 `;
 
-const ButtonText: React.FC<ButtonTextType> = styled(Text)<{ variant: string }>`
+const ButtonText = styled(Text)`
   color: ${(props) => props.theme.buttons.text.color || "#fff"};
   font-weight: bold;
   ${(props) => (props.variant === "grey" ? `color: #fff;` : null)}
 `;
 
-const Button: React.FC<ButtonType> = (props) => {
+const Button = (props) => {
   const { children, onPress, variant } = props;
   return (
     <ButtonStyle onPress={onPress} variant={variant}>

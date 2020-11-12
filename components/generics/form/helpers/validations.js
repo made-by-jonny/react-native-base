@@ -1,8 +1,4 @@
-type Validations = {
-  [key: string]: (rule: string, value: string) => boolean | string;
-};
-
-export const minLength = (rule: string, value: string) => {
+export const minLength = (rule, value) => {
   const isValid = value.toString().length >= parseInt(rule) ? true : false;
   if (!isValid) {
     return `Please enter a value larger than ${rule}`;
@@ -10,7 +6,7 @@ export const minLength = (rule: string, value: string) => {
   return true;
 };
 
-export const maxLength = (rule: string, value: string) => {
+export const maxLength = (rule, value) => {
   const isValid = value.toString().length <= parseInt(rule) ? true : false;
   if (!isValid) {
     return `Please enter a value smaller than ${rule}`;
@@ -18,7 +14,7 @@ export const maxLength = (rule: string, value: string) => {
   return true;
 };
 
-export const email = (rule: string, value: string) => {
+export const email = (rule, value) => {
   const isValid = value.match("@");
   if (!isValid) {
     return `Please enter a valid email`;
@@ -26,7 +22,7 @@ export const email = (rule: string, value: string) => {
   return true;
 };
 
-export const required = (rule: string, value: string) => {
+export const required = (rule, value) => {
   const isValid = value.toString().length < 0;
   if (!isValid) {
     return `This input is required`;
@@ -34,7 +30,7 @@ export const required = (rule: string, value: string) => {
   return true;
 };
 
-const validations: Validations = {
+const validations = {
   required,
   email,
   maxLength,

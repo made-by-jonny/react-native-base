@@ -2,14 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, Text } from "react-native";
 import Button from "./button";
 
-type FormType = {
-  onSubmit({}): void;
-  errorMessage?: string;
-  hideSubmit?: true;
-  ButtonLabel?: string;
-};
-
-const Form: React.FC<FormType> = ({
+const Form = ({
   children,
   onSubmit = (data) => {},
   errorMessage,
@@ -19,11 +12,11 @@ const Form: React.FC<FormType> = ({
   const [items, setItems] = useState({});
 
   const childrenWithProps = React.Children.map(children, (child) =>
-    React.cloneElement(child as React.ReactElement<any>, {
-      informForm: (data: { isValid: boolean; value: string }) => {
+    React.cloneElement(child, {
+      informForm: (data) => {
         setItems(Object.assign(items, data));
       },
-      onChange: (data: { isValid: boolean; value: string }) => {
+      onChange: (data) => {
         setItems(Object.assign(items, data));
       },
     })

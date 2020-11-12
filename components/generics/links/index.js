@@ -2,28 +2,14 @@ import React from "react";
 import { TouchableHighlight, Text } from "react-native";
 import styled from "styled-components/native";
 
-type LinkType = {
-  theme?: any;
-  style?: any;
-  variant?: string;
-  onPress(): void;
-  children: any;
-};
+const LinkStyle = styled(TouchableHighlight)``;
 
-type LinkTextType = {
-  variant?: string;
-  theme?: any;
-  style?: any;
-};
-
-const LinkStyle: React.FC<LinkType> = styled(TouchableHighlight)<LinkType>``;
-
-const LinkText: React.FC<LinkTextType> = styled(Text)<{ variant: string }>`
+const LinkText = styled(Text)`
   color: #666;
   font-weight: bold;
 `;
 
-const Link: React.FC<LinkType> = (props) => {
+const Link = (props) => {
   const { children, onPress, variant } = props;
   return (
     <LinkStyle onPress={onPress} variant={variant}>

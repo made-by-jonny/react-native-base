@@ -4,7 +4,7 @@ import Form from "../../../components/generics/form";
 import Input from "../../../components/generics/form/inputs";
 import { useNavigation } from "@react-navigation/native";
 
-const ForgotPassView: React.FC = () => {
+const ForgotPassView = () => {
   const navigate = useNavigation();
   return (
     <View>

@@ -5,6 +5,4 @@ const reducers = combineReducers({});
 
 const store = createStore(reducers, applyMiddleware(thunk));
 
-export type AppDispatch = typeof store.dispatch;
-
 export default store;

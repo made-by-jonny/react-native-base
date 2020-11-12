@@ -3,32 +3,7 @@ import { AppDispatch } from "../../store";
 const USERLOGIN = "USERLOGIN";
 const USERLOGINFAIL = "USERLOGINFAIL";
 
-interface UserType {
-  email: {
-    isValid: boolean;
-    value: string;
-  };
-  password: {
-    isValid: boolean;
-    value: string;
-  };
-}
-
-interface UserState {
-  userAuthenticated?: boolean;
-  user_id?: number;
-}
-
-interface UserAction {
-  type: string;
-  payload: any;
-}
-
-const initialState: UserState = {
-  userAuthenticated: false,
-};
-
-const ApplianceReducer = (state = initialState, action: UserAction) => {
+const ApplianceReducer = (state = initialState, action) => {
   switch (action.type) {
     case USERLOGIN:
       return {
@@ -40,7 +15,7 @@ const ApplianceReducer = (state = initialState, action: UserAction) => {
   }
 };
 
-export const login = (data: UserType) => async (dispatch: AppDispatch) => {
+export const login = (data) => async (dispatch) => {
   try {
     const userData = await api.post("/auth/local", {
       email: data.email.value,
