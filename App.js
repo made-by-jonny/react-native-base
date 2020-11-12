@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Provider } from "react-redux";
 import store from "./state/store";
 import { View, Text } from "react-native";
-
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { ThemeProvider } from "styled-components";
