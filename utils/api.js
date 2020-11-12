@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const devURL: string = "http://192.168.1.118:1337";
-const stagingURL: string = "";
-const prodURL: string = "";
+const devURL = "http://192.168.1.118:1337";
+const stagingURL = "";
+const prodURL = "";
 
 const api = axios.create({
   baseURL: devURL,
