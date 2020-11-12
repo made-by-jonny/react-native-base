@@ -6,11 +6,15 @@ const ButtonStyle = styled.TouchableHighlight`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${(props) => props.theme.buttons.background || "#000"};
+  ${(props) =>
+    props.variant === "outline"
+      ? `border: 1px solid #fff;`
+      : `background-color: 
+          ${props.theme.buttons.background || "#000"};`}
+
   ${(props) => (props.variant === "grey" ? `background-color:#ccc;` : null)}
-  border-radius: ${(props) => props.theme.buttons.borderRadius || "30px"};
-  padding: ${(props) => props.theme.buttons.padding || "32px"};
-  margin-bottom: 10px;
+  border-radius: 100px;
+  padding: 10px 20px;
 `;
 
 const ButtonText = styled(Text)`

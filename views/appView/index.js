@@ -79,11 +79,11 @@ function MyTabBar({ state, descriptors, navigation }) {
             style={{ flex: 1 }}
           >
             <>
-              <options.tabBarIcon color={isFocused ? "#46b04a" : "#ccc"} />
+              <options.tabBarIcon color={isFocused ? "#b7dcdd" : "#ccc"} />
               <Text
                 style={{
                   fontWeight: "bold",
-                  color: isFocused ? "#46b04a" : "#ccc",
+                  color: isFocused ? "#b7dcdd" : "#ccc",
                 }}
               >
                 {label}
@@ -103,7 +103,7 @@ function App() {
       barStyle={{
         backgroundColor: "#333366",
       }}
-      activeColor="#46b04a"
+      activeColor="#5c7778"
       inactiveColor="#ccc"
     >
       <Tab.Screen
