@@ -8,28 +8,36 @@ const Stack = createStackNavigator();
 const Heading = styled.Text`
   font-weight: bold;
   font-size: 30px;
-  color: #5c7778;
+  color: #303242;
 `;
 
 const SubHeading = styled.Text`
   font-size: 20px;
-  color: #a6a8a3;
+  color: #a1aab7;
 `;
 
 const SecondaryHeading = styled.Text`
   font-weight: bold;
   font-size: 20px;
-  color: #5c7778;
+  color: #303242;
 `;
 
 const PrimaryCard = styled.View`
-  margin: 10px;
-  background: #b7dcdd;
+  padding: 20px;
+  margin: 0 30px 30px;
+  background: #fff;
   border-radius: 15px;
 `;
 
+const PrimaryCardContent = styled.View`
+  padding: 5px 0;
+  align-items: ${(props) => props.align || "center"};
+  justify-content: ${(props) => props.justify || "flex-start"};
+  flex-direction: ${(props) => props.direction || "row"};
+`;
+
 const Header = styled.View`
-  padding: 20px 20px 0;
+  padding: 0 30px;
   justify-content: center;
   flex-direction: ${(props) => props.direction || "row"};
 `;
@@ -40,18 +48,24 @@ const Footer = styled.View`
   justify-content: flex-end;
 `;
 const Details = styled.View`
-  padding: 10px 20px;
-  background: #fff;
+  padding: 5px 10px;
   border-bottom-right-radius: 15px;
   border-bottom-left-radius: 15px;
+`;
+
+const DetailsText = styled.Text`
+  font-weight: bold;
+  font-size: 14px;
+  color: #303242;
 `;
 
 const Pill = styled.View`
   padding: 5px 10px;
   border-radius: 100px;
   align-items: center;
+  margin-right: 5px;
   justify-content: center;
-  background: #fff;
+  background: #a1aab7;
   margin-bottom: 10px;
 `;
 
@@ -62,68 +76,67 @@ const Index = () => {
     <ScrollView
       style={{
         flex: 1,
-        marginTop: 50,
-        backgroundColor: "#f4f6f3",
-        paddingLeft: 16,
-        paddingRight: 16,
+        backgroundColor: "#ebeff8",
       }}
     >
-      <Header direction="column" style={{ marginBottom: 10 }}>
+      <Header direction="column" style={{ marginBottom: 30 }}>
         <Heading>Welcome, Jonny</Heading>
         <SubHeading>Thurdsay, 12th Nov</SubHeading>
       </Header>
-      <Header direction="column" style={{ marginBottom: 10 }}>
+      <Header direction="column" style={{ marginBottom: 20 }}>
         <SecondaryHeading>Today's Workout</SecondaryHeading>
       </Header>
       <PrimaryCard>
-        <Header>
-          <View style={{ flex: 3 }}>
-            <Heading>Semi Private</Heading>
-            <Text style={{ fontWeight: "bold", color: "#729191" }}>
-              Coach by: Kev Myers
-            </Text>
-            <Text
-              style={{
-                fontWeight: "bold",
-                color: "#729191",
-              }}
-            >
-              Arm &amp; Shoulders
-            </Text>
-          </View>
-          <View style={{ flex: 1 }}>
-            <Pill>
-              <Text style={{ fontWeight: "bold", color: "#93c1c6" }}>
-                45min
-              </Text>
-            </Pill>
-            <Pill>
-              <Text style={{ fontWeight: "bold", color: "#93c1c6" }}>
-                6:30pm
-              </Text>
-            </Pill>
-          </View>
-        </Header>
-        <Footer>
+        <PrimaryCardContent style={{ flex: 1 }}>
+          <Pill>
+            <Text style={{ fontWeight: "bold", color: "#fff" }}>45min</Text>
+          </Pill>
+          <Pill>
+            <Text style={{ fontWeight: "bold", color: "#fff" }}>6:30pm</Text>
+          </Pill>
+        </PrimaryCardContent>
+        <PrimaryCardContent
+          style={{ flex: 3 }}
+          direction="column"
+          align="flex-start"
+        >
+          <Heading>Semi Private</Heading>
+          <Text style={{ fontWeight: "bold", color: "#a1aab7" }}>
+            Coach by: Kev Myers
+          </Text>
+          <Text
+            style={{
+              fontWeight: "bold",
+              color: "#a1aab7",
+            }}
+          >
+            Arm &amp; Shoulders
+          </Text>
+        </PrimaryCardContent>
+
+        <PrimaryCardContent>
           <View style={{ flex: 1 }}>
             <Text style={{ fontWeight: "bold", color: "#729191" }}>
               Attending 6/8
             </Text>
           </View>
           <Button variant="outline">See Workout</Button>
-        </Footer>
+        </PrimaryCardContent>
       </PrimaryCard>
       <Header direction="column" style={{ marginBottom: 10 }}>
         <SecondaryHeading>Latest Videos</SecondaryHeading>
       </Header>
-      <ScrollView horizontal={true}>
+      <ScrollView
+        style={{ marginLeft: 20 }}
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+      >
         {[1, 2, 3, 4].map((item) => (
           <ImageCard style={{ minWidth: 200, margin: 10 }}>
             <Image
               style={{
                 width: 199,
-                borderTopRightRadius: 15,
-                borderTopLeftRadius: 15,
+                borderRadius: 15,
                 height: 130,
               }}
               width={200}
@@ -132,15 +145,22 @@ const Index = () => {
               source={require("../../../assets/tempImage.jpg")}
             />
             <Details>
-              <Text>Hello</Text>
+              <DetailsText>Example title</DetailsText>
+              <Text style={{ width: 200, color: "#a1aab7" }}>
+                Example of the description of the post.
+              </Text>
             </Details>
           </ImageCard>
         ))}
       </ScrollView>
-      <Header direction="column" style={{ marginBottom: 10 }}>
+      <Header direction="column" style={{ marginBottom: 20 }}>
         <SecondaryHeading>Latest Recipes</SecondaryHeading>
       </Header>
-      <ScrollView horizontal={true}>
+      <ScrollView
+        horizontal={true}
+        style={{ marginLeft: 20 }}
+        showsHorizontalScrollIndicator={false}
+      >
         {[1, 2, 3, 4].map((item) => (
           <ImageCard style={{ minWidth: 200, margin: 10 }}>
             <Image
@@ -156,7 +176,10 @@ const Index = () => {
               source={require("../../../assets/tempImage.jpg")}
             />
             <Details>
-              <Text>Hello</Text>
+              <DetailsText>Example title</DetailsText>
+              <Text style={{ width: 200, color: "#a1aab7" }}>
+                Example of the description of the post.
+              </Text>
             </Details>
           </ImageCard>
         ))}
@@ -167,12 +190,11 @@ const Index = () => {
 
 const ProfileStack = () => (
   <Stack.Navigator
-    headerMode="none"
     screenOptions={{
-      headerTintColor: "#fff",
-
+      headerTitleStyle: { alignSelf: "center" },
+      headerTintColor: "#bfc9d7",
       headerStyle: {
-        backgroundColor: "#b7dcdd",
+        backgroundColor: "#ebeff8",
         borderBottomWidth: 0,
         elevation: 0,
       },

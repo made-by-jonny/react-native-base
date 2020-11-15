@@ -25,9 +25,8 @@ const Heading = styled.Text`
 
 const SubHeading = styled.Text`
   font-size: 20px;
-  color: #a6a8a3;
+  color: #a1aab7;
 `;
-
 const SecondaryHeading = styled.Text`
   font-weight: bold;
   font-size: 20px;
@@ -41,7 +40,7 @@ const PrimaryCard = styled.View`
 `;
 
 const Header = styled.View`
-  padding: 20px 20px 0;
+  padding: 0 30px;
   justify-content: center;
   flex-direction: ${(props) => props.direction || "row"};
 `;
@@ -52,10 +51,15 @@ const Footer = styled.View`
   justify-content: flex-end;
 `;
 const Details = styled.View`
-  flex: 1;
-  padding: 10px 20px;
+  padding: 0 10px;
   border-bottom-right-radius: 15px;
   border-bottom-left-radius: 15px;
+`;
+
+const DetailsText = styled.Text`
+  font-weight: bold;
+  font-size: ${(props) => props.size || "14px"};
+  color: #303242;
 `;
 
 const Pill = styled.View`
@@ -71,9 +75,8 @@ const ImageCard = styled.View``;
 
 const Index = () => {
   return (
-    <SafeAreaView>
+    <View style={{ backgroundColor: "#ebeff8" }}>
       <ScrollView>
-        <Heading style={{ textAlign: "center" }}>Browse</Heading>
         <Form hideSubmit={true}>
           <Input
             hideLabel={true}
@@ -82,88 +85,105 @@ const Index = () => {
             name="search"
           />
         </Form>
-        <SecondaryHeading style={{ marginLeft: 20 }}>
+        <SecondaryHeading style={{ marginLeft: 30 }}>
           Latest Videos
         </SecondaryHeading>
-        <ScrollView style={{ marginLeft: 20 }} horizontal={true}>
-          {[...new Array(24)].map((item) => (
-            <ImageCard
-              style={{ flex: 1, width: 200, padding: 10, minWidth: 150 }}
-            >
+        <ScrollView
+          style={{ marginLeft: 20 }}
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+        >
+          {[...new Array(5)].map((item) => (
+            <ImageCard style={{ minWidth: 200, margin: 10 }}>
               <Image
                 style={{
-                  borderRadius: 10,
-                  flex: 1,
-                  maxWidth: 180,
-                  height: 100,
+                  width: 199,
+                  borderRadius: 15,
+                  height: 130,
                 }}
-                resizeMode="cover"
+                width={200}
+                height={50}
+                resizeMode="contain"
                 source={require("../../../assets/tempImage.jpg")}
               />
               <Details>
-                <Text>Hello</Text>
+                <DetailsText>Example title</DetailsText>
+                <Text style={{ width: 200, color: "#a1aab7" }}>
+                  Example of the description of the post.
+                </Text>
               </Details>
             </ImageCard>
           ))}
         </ScrollView>
-        <SecondaryHeading style={{ marginLeft: 20 }}>
+        <SecondaryHeading style={{ marginLeft: 30 }}>
           Latest Recipes
         </SecondaryHeading>
-        <ScrollView style={{ marginLeft: 20 }} horizontal={true}>
-          {[...new Array(24)].map((item) => (
-            <ImageCard
-              style={{ flex: 1, width: 200, padding: 10, minWidth: 150 }}
-            >
+        <ScrollView
+          style={{ marginLeft: 20 }}
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+        >
+          {[...new Array(5)].map((item) => (
+            <ImageCard style={{ minWidth: 200, margin: 10 }}>
               <Image
                 style={{
-                  borderRadius: 10,
-                  flex: 1,
-                  maxWidth: 180,
-                  height: 100,
+                  width: 199,
+                  borderRadius: 15,
+                  height: 130,
                 }}
-                resizeMode="cover"
+                width={200}
+                height={50}
+                resizeMode="contain"
                 source={require("../../../assets/tempImage.jpg")}
               />
               <Details>
-                <Text>Hello</Text>
+                <DetailsText>Example title</DetailsText>
+                <Text style={{ width: 200, color: "#a1aab7" }}>
+                  Example of the description of the post.
+                </Text>
               </Details>
             </ImageCard>
           ))}
         </ScrollView>
-        <SecondaryHeading style={{ marginLeft: 20 }}>
+        <SecondaryHeading style={{ marginLeft: 30 }}>
           Latest Articles
         </SecondaryHeading>
-        <ScrollView style={{ marginLeft: 20 }} horizontal={true}>
-          {[...new Array(24)].map((item) => (
-            <ImageCard
-              style={{ flex: 1, width: 200, padding: 10, minWidth: 150 }}
-            >
+        <ScrollView
+          style={{ marginLeft: 20 }}
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+        >
+          {[...new Array(5)].map((item) => (
+            <ImageCard style={{ minWidth: 200, margin: 10 }}>
               <Image
                 style={{
-                  borderRadius: 10,
-                  flex: 1,
-                  maxWidth: 180,
-                  height: 100,
+                  width: 199,
+                  borderRadius: 15,
+                  height: 130,
                 }}
-                resizeMode="cover"
+                width={200}
+                height={50}
+                resizeMode="contain"
                 source={require("../../../assets/tempImage.jpg")}
               />
               <Details>
-                <Text>Hello</Text>
+                <DetailsText>Example title</DetailsText>
+                <Text style={{ width: 200, color: "#a1aab7" }}>
+                  Example of the description of the post.
+                </Text>
               </Details>
             </ImageCard>
           ))}
         </ScrollView>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 };
 
 const Index2 = () => {
   return (
-    <SafeAreaView>
+    <View style={{ backgroundColor: "#ebeff8" }}>
       <ScrollView>
-        <Heading style={{ textAlign: "center" }}>Browse</Heading>
         <Form hideSubmit={true}>
           <Input
             hideLabel={true}
@@ -172,7 +192,7 @@ const Index2 = () => {
             name="search"
           />
         </Form>
-        {[...new Array(24)].map((item) => (
+        {[...new Array(5)].map((item) => (
           <ImageCard
             style={{
               flexDirection: "row",
@@ -183,21 +203,25 @@ const Index2 = () => {
           >
             <Image
               style={{
-                borderRadius: 10,
-                flex: 1,
-                maxWidth: 180,
-                height: 100,
+                width: 199,
+                borderRadius: 15,
+                height: 130,
               }}
-              resizeMode="cover"
+              width={200}
+              height={50}
+              resizeMode="contain"
               source={require("../../../assets/tempImage.jpg")}
             />
-            <Details>
-              <Text>Hello</Text>
+            <Details style={{ justifyContent: "center" }}>
+              <DetailsText size="24px">Example title</DetailsText>
+              <Text style={{ width: 200, color: "#a1aab7" }}>
+                Example of the description of the post.
+              </Text>
             </Details>
           </ImageCard>
         ))}
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -210,23 +234,24 @@ const MyTabs = () => {
       swipeEnabled={false}
       tabBarOptions={{
         scrollEnabled: true,
-        activeTintColor: "#5c7778",
+        activeTintColor: "#303242",
         indicatorStyle: {
-          backgroundColor: "transparent",
+          backgroundColor: "#303242",
         },
         labelStyle: {
           fontWeight: "bold",
-          fontSize: 24,
         },
         style: {
-          backgroundColor: "transprent",
+          backgroundColor: "#ebeff8",
         },
       }}
     >
       <Tab.Screen name="Recent" component={Index} />
+      <Tab.Screen name="Workouts" component={Index2} />
       <Tab.Screen name="Videos" component={Index2} />
+
       <Tab.Screen name="Recipes" component={Index2} />
-      <Tab.Screen name="Articles" component={Index2} />
+      <Tab.Screen name="Article" component={Index2} />
     </Tab.Navigator>
   );
 };
@@ -234,10 +259,10 @@ const MyTabs = () => {
 const ProfileStack = () => (
   <Stack.Navigator
     screenOptions={{
-      headerTintColor: "#5c7778",
-
+      headerTitleStyle: { alignSelf: "center" },
+      headerTintColor: "#bfc9d7",
       headerStyle: {
-        backgroundColor: "transparent",
+        backgroundColor: "#ebeff8",
         borderBottomWidth: 0,
         elevation: 0,
       },

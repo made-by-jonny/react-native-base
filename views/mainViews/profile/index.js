@@ -7,9 +7,10 @@ const Stack = createStackNavigator();
 const ProfileStack = () => (
   <Stack.Navigator
     screenOptions={{
-      headerTintColor: "#46b04a",
+      headerTitleStyle: { alignSelf: "center" },
+      headerTintColor: "#bfc9d7",
       headerStyle: {
-        backgroundColor: "#fff",
+        backgroundColor: "#ebeff8",
         borderBottomWidth: 0,
         elevation: 0,
       },

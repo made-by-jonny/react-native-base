@@ -79,11 +79,11 @@ function MyTabBar({ state, descriptors, navigation }) {
             style={{ flex: 1 }}
           >
             <>
-              <options.tabBarIcon color={isFocused ? "#b7dcdd" : "#ccc"} />
+              <options.tabBarIcon color={isFocused ? "#303242" : "#ccc"} />
               <Text
                 style={{
                   fontWeight: "bold",
-                  color: isFocused ? "#b7dcdd" : "#ccc",
+                  color: isFocused ? "#303242" : "#ccc",
                 }}
               >
                 {label}
@@ -103,7 +103,7 @@ function App() {
       barStyle={{
         backgroundColor: "#333366",
       }}
-      activeColor="#5c7778"
+      activeColor="#303242"
       inactiveColor="#ccc"
     >
       <Tab.Screen
@@ -130,6 +130,20 @@ function App() {
           ),
         }}
       />
+      <Tab.Screen
+        name="Metrics"
+        component={Metrics}
+        options={{
+          tabBarLabel: "Tracking",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              name="chart-bell-curve-cumulative"
+              color={color}
+              size={28}
+            />
+          ),
+        }}
+      />
 
       <Tab.Screen
         name="learn"
@@ -141,20 +155,7 @@ function App() {
           ),
         }}
       />
-      <Tab.Screen
-        name="metrics"
-        component={Metrics}
-        options={{
-          tabBarLabel: "Metrics",
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons
-              name="chart-bell-curve-cumulative"
-              color={color}
-              size={28}
-            />
-          ),
-        }}
-      />
+
       <Tab.Screen
         name="account"
         component={Profile}

@@ -8,7 +8,7 @@ const ButtonStyle = styled.TouchableHighlight`
   justify-content: center;
   ${(props) =>
     props.variant === "outline"
-      ? `border: 1px solid #fff;`
+      ? `border: 1px solid #303242;`
       : `background-color: 
           ${props.theme.buttons.background || "#000"};`}
 
@@ -20,6 +20,7 @@ const ButtonStyle = styled.TouchableHighlight`
 const ButtonText = styled(Text)`
   color: ${(props) => props.theme.buttons.text.color || "#fff"};
   font-weight: bold;
+  ${(props) => (props.variant === "outline" ? `color: #303242` : ``)}
   ${(props) => (props.variant === "grey" ? `color: #fff;` : null)}
 `;
 

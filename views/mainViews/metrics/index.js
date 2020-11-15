@@ -14,20 +14,32 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import Form from "../../../components/generics/form";
 import Input from "../../../components/generics/form/inputs";
+import { FontAwesome } from "@expo/vector-icons";
 
 const Stack = createStackNavigator();
+
+const weights = [
+  { name: "deadlift" },
+  { name: "bench press" },
+  { name: "military press" },
+  { name: "back squat" },
+  { name: "front squat" },
+  { name: "overhead squat" },
+  { name: "snatch" },
+  { name: "clean" },
+  { name: "jerk" },
+];
 
 const Heading = styled.Text`
   font-weight: bold;
   font-size: 30px;
-  color: #5c7778;
+  color: #303242;
 `;
 
 const SubHeading = styled.Text`
   font-size: 20px;
-  color: #a6a8a3;
+  color: #a1aab7;
 `;
-
 const SecondaryHeading = styled.Text`
   font-weight: bold;
   font-size: 20px;
@@ -41,7 +53,7 @@ const PrimaryCard = styled.View`
 `;
 
 const Header = styled.View`
-  padding: 20px 20px 0;
+  padding: 0 30px;
   justify-content: center;
   flex-direction: ${(props) => props.direction || "row"};
 `;
@@ -52,105 +64,83 @@ const Footer = styled.View`
   justify-content: flex-end;
 `;
 const Details = styled.View`
-  flex: 1;
-  padding: 10px 20px;
+  padding: 0 10px;
   border-bottom-right-radius: 15px;
   border-bottom-left-radius: 15px;
 `;
 
-const Pill = styled.View`
-  padding: 5px 10px;
-  border-radius: 100px;
-  align-items: center;
-  justify-content: center;
+const DetailsText = styled.Text`
+  font-weight: bold;
+  font-size: ${(props) => props.size || "14px"};
+  color: #303242;
+`;
+
+const Panel = styled.View`
+  padding: 10px;
+  margin: 20px;
+  border-radius: 15px;
   background: #fff;
   margin-bottom: 10px;
 `;
 
+const ListItem = styled.View`
+  flex-direction: row;
+  padding: 20px 0;
+  align-items: center;
+  border-bottom-width: 1px;
+  border-bottom-color: #f1f1f1;
+`;
+
 const ImageCard = styled.View``;
 
-const Index2 = () => {
+const Index = () => {
   return (
-    <SafeAreaView>
+    <View style={{ backgroundColor: "#ebeff8" }}>
       <ScrollView>
-        <Heading style={{ textAlign: "center" }}>Browse</Heading>
-        <Form hideSubmit={true}>
-          <Input
-            hideLabel={true}
-            placeholder="search content..."
-            label="search"
-            name="search"
-          />
-        </Form>
-        {[...new Array(24)].map((item) => (
-          <ImageCard
-            style={{
-              flexDirection: "row",
-              flex: 1,
-              padding: 10,
-              minWidth: 150,
-            }}
-          >
-            <Image
-              style={{
-                borderRadius: 10,
-                flex: 1,
-                maxWidth: 180,
-                height: 100,
-              }}
-              resizeMode="cover"
-              source={require("../../../assets/tempImage.jpg")}
-            />
-            <Details>
-              <Text>Hello</Text>
-            </Details>
-          </ImageCard>
-        ))}
+        <Heading style={{ marginLeft: 30 }}>Weights</Heading>
+        <Panel>
+          {weights.map((item) => (
+            <ListItem>
+              <Text
+                style={{
+                  flex: 1,
+                  color: "#a1aab7",
+                  textTransform: "uppercase",
+                  fontWeight: "bold",
+                  fontSize: 20,
+                }}
+              >
+                {item.name}
+              </Text>
+              <FontAwesome
+                style={{
+                  marginLeft: 3,
+                }}
+                name="chevron-right"
+                size={20}
+                color="#CECDCE"
+              />
+            </ListItem>
+          ))}
+        </Panel>
       </ScrollView>
-    </SafeAreaView>
-  );
-};
-
-const Tab = createMaterialTopTabNavigator();
-
-const MyTabs = () => {
-  return (
-    <Tab.Navigator
-      headerTitle="Learn"
-      swipeEnabled={false}
-      tabBarOptions={{
-        activeTintColor: "#5c7778",
-        indicatorStyle: {
-          backgroundColor: "transparent",
-        },
-        labelStyle: {
-          fontWeight: "bold",
-          fontSize: 24,
-        },
-        style: {
-          backgroundColor: "transprent",
-        },
-      }}
-    >
-      <Tab.Screen name="Weights" component={Index2} />
-      <Tab.Screen name="Well being" component={Index2} />
-    </Tab.Navigator>
+    </View>
   );
 };
 
 const ProfileStack = () => (
   <Stack.Navigator
     screenOptions={{
-      headerTintColor: "#5c7778",
-
+      headerTitleStyle: { alignSelf: "center" },
+      headerTintColor: "#bfc9d7",
       headerStyle: {
-        backgroundColor: "transparent",
+        backgroundColor: "#ebeff8",
         borderBottomWidth: 0,
         elevation: 0,
       },
     }}
   >
-    <Stack.Screen name="Tracking" component={MyTabs} />
+    <Stack.Screen name="Tracking" component={Index} />
   </Stack.Navigator>
 );
 
