@@ -13,8 +13,8 @@ const ButtonStyle = styled.TouchableHighlight`
           ${props.theme.buttons.background || "#000"};`}
 
   ${(props) => (props.variant === "grey" ? `background-color:#ccc;` : null)}
-  border-radius: 100px;
-  padding: 10px 20px;
+  border-radius: 15px;
+  padding: 20px 20px;
 `;
 
 const ButtonText = styled(Text)`
@@ -25,9 +25,9 @@ const ButtonText = styled(Text)`
 `;
 
 const Button = (props) => {
-  const { children, onPress, variant } = props;
+  const { children, onPress, variant, style } = props;
   return (
-    <ButtonStyle onPress={onPress} variant={variant}>
+    <ButtonStyle onPress={onPress} variant={variant} style={style}>
       <ButtonText variant={variant}>{children}</ButtonText>
     </ButtonStyle>
   );

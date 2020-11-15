@@ -12,6 +12,7 @@ import ForgotPassEmailView from "./views/authView/forgotPassView";
 import ForgotPassCodeView from "./views/authView/forgotPassCodeView";
 import ForgotPassPassword from "./views/authView/forgotPassPassword";
 import WorkoutView from "./views/mainViews/learn/workout";
+import ContentView from "./views/mainViews/learn/content";
 
 const Stack = createStackNavigator();
 
@@ -60,6 +61,7 @@ const App = () => {
               component={AppView}
             />
             <Stack.Screen name="Workout" component={WorkoutView} />
+            <Stack.Screen name="ContentView" component={ContentView} />
             <Stack.Screen
               name="AuthView"
               options={{

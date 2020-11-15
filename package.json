@@ -15,6 +15,7 @@
     "@react-navigation/native": "^5.1.7",
     "@react-navigation/stack": "^5.2.14",
     "axios": "^0.21.0",
+    "dayjs": "^1.9.6",
     "expo": "~39.0.2",
     "expo-status-bar": "~1.0.2",
     "react": "16.13.1",
@@ -33,12 +34,12 @@
     "react-native-tab-view": "^2.15.2",
     "react-native-vimeo": "^0.3.0",
     "react-native-web": "~0.13.12",
+    "react-native-webview": "10.7.0",
     "react-native-webview-bridge": "^0.40.1",
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^5.2.1",
-    "react-native-webview": "10.7.0"
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0"

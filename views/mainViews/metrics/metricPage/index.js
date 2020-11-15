@@ -9,6 +9,12 @@ import {
 } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import styled from "styled-components";
+import Panel from "../../../../components/panel";
+import Heading from "../../../../components/heading";
+import ListItem from "../../../../components/listItem";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+dayjs.extend(relativeTime);
 import {
   LineChart,
   BarChart,
@@ -17,94 +23,40 @@ import {
   ContributionGraph,
   StackedBarChart,
 } from "react-native-chart-kit";
+import Button from "../../../../components/generics/form/button";
 
 const Stack = createStackNavigator();
 
 const weights = {
   name: "deadlift",
   previousEntries: [
-    { weight: 50, date: "10/10/2020" },
-    { weight: 55, date: "10/11/2020" },
-    { weight: 56, date: "10/12/2020" },
+    { weight: 50, date: "10/09/2020" },
+    { weight: 55, date: "10/08/2020" },
+    { weight: 56, date: "10/07/2020" },
+    { weight: 56, date: "10/07/2020" },
+    { weight: 56, date: "10/07/2020" },
+    { weight: 56, date: "10/07/2020" },
   ],
 };
-
-const Heading = styled.Text`
-  font-weight: bold;
-  font-size: 30px;
-  color: #303242;
-`;
-
-const SubHeading = styled.Text`
-  font-size: 20px;
-  color: #a1aab7;
-`;
-const SecondaryHeading = styled.Text`
-  font-weight: bold;
-  font-size: 20px;
-  color: #5c7778;
-`;
-
-const PrimaryCard = styled.View`
-  margin: 10px;
-  background: #b7dcdd;
-  border-radius: 15px;
-`;
-
-const Header = styled.View`
-  padding: 0 30px;
-  justify-content: center;
-  flex-direction: ${(props) => props.direction || "row"};
-`;
-const Footer = styled.View`
-  padding: 20px;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-`;
-const Details = styled.View`
-  padding: 0 10px;
-  border-bottom-right-radius: 15px;
-  border-bottom-left-radius: 15px;
-`;
-
-const DetailsText = styled.Text`
-  font-weight: bold;
-  font-size: ${(props) => props.size || "14px"};
-  color: #303242;
-`;
-
-const Panel = styled.View`
-  padding: 10px;
-  margin: 20px;
-  border-radius: 15px;
-  background: #fff;
-  margin-bottom: 10px;
-`;
-
-const ListItem = styled.View`
-  flex-direction: row;
-  padding: 20px 0;
-  align-items: center;
-  border-bottom-width: 1px;
-  border-bottom-color: #f1f1f1;
-`;
 
 const ImageCard = styled.View``;
 
 const Index = () => {
   return (
-    <View style={{ backgroundColor: "#ebeff8" }}>
+    <View style={{ backgroundColor: "#ebeff8", flex: 1 }}>
       <ScrollView>
-        <Heading style={{ marginLeft: 30 }}>DeadLift</Heading>
-        <View>
-          <Text>Bezier Line Chart</Text>
+        <Heading style={{ marginLeft: 30, marginBottom: 20 }}>DeadLift</Heading>
+        <View style={{ marginLeft: 20, marginRight: 30 }}>
           <LineChart
             data={{
-              labels: weights.previousEntries.map((item) => item.date),
+              labels: weights.previousEntries
+                .slice(0, 5)
+                .map((item) => item.date),
               datasets: [
                 {
-                  data: weights.previousEntries.map((item) => item.weight),
+                  data: weights.previousEntries
+                    .slice(0, 5)
+                    .map((item) => item.weight),
                 },
               ],
             }}
@@ -131,35 +83,80 @@ const Index = () => {
             }}
           />
         </View>
-        <Panel>
+        <Panel style={{ marginBottom: 100 }}>
           {weights.previousEntries.map((item) => (
-            <ListItem>
-              <Text
-                style={{
-                  flex: 1,
-                  color: "#a1aab7",
-                  textTransform: "uppercase",
-                  fontWeight: "bold",
-                  fontSize: 20,
-                }}
-              >
-                {item.weight}kg
-              </Text>
-              <Text
-                style={{
-                  flex: 1,
-                  color: "#a1aab7",
-                  textTransform: "uppercase",
-                  fontWeight: "bold",
-                  fontSize: 20,
-                }}
-              >
-                {item.date}
-              </Text>
+            <ListItem arrow={false}>
+              <View style={{ flexDirection: "column", flex: 1 }}>
+                <Text
+                  style={{
+                    flex: 1,
+                    color: "#a1aab7",
+                    textTransform: "uppercase",
+                    fontWeight: "bold",
+                    fontSize: 12,
+                  }}
+                >
+                  Weight
+                </Text>
+                <Text
+                  style={{
+                    justifySelf: "flex-end",
+                    flex: 1,
+                    color: "#303242",
+                    textTransform: "uppercase",
+                    fontWeight: "bold",
+                    fontSize: 25,
+                  }}
+                >
+                  {item.weight}kg
+                </Text>
+              </View>
+              <View style={{ flexDirection: "column", flex: 1 }}>
+                <Text
+                  style={{
+                    textAlign: "right",
+                    flex: 1,
+                    color: "#a1aab7",
+                    textTransform: "uppercase",
+                    fontWeight: "bold",
+                    fontSize: 12,
+                  }}
+                >
+                  Date
+                </Text>
+                <Text
+                  style={{
+                    flex: 1,
+                    textAlign: "right",
+                    color: "#303242",
+                    textTransform: "uppercase",
+                    fontWeight: "bold",
+                    fontSize: 12,
+                  }}
+                >
+                  {dayjs(item.date).from()}
+                </Text>
+              </View>
             </ListItem>
           ))}
         </Panel>
       </ScrollView>
+      <View
+        style={{
+          width: "100%",
+          position: "absolute",
+          bottom: 10,
+        }}
+      >
+        <Button
+          style={{
+            marginLeft: 50,
+            marginRight: 50,
+          }}
+        >
+          Update Weight
+        </Button>
+      </View>
     </View>
   );
 };
