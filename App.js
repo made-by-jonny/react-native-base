@@ -11,6 +11,7 @@ import AuthView from "./views/authView";
 import ForgotPassEmailView from "./views/authView/forgotPassView";
 import ForgotPassCodeView from "./views/authView/forgotPassCodeView";
 import ForgotPassPassword from "./views/authView/forgotPassPassword";
+import WorkoutView from "./views/mainViews/learn/workout";
 
 const Stack = createStackNavigator();
 
@@ -40,16 +41,41 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <NavigationContainer>
           <Stack.Navigator
-            headerMode="none"
+            screenOptions={{
+              headerTitleStyle: { alignSelf: "center" },
+              headerTintColor: "#bfc9d7",
+              headerStyle: {
+                backgroundColor: "#ebeff8",
+                borderBottomWidth: 0,
+                elevation: 0,
+              },
+            }}
             initialRouteName={isAuth === true ? "AppView" : "AuthView"}
           >
-            <Stack.Screen name="AppView" component={AppView} />
-            <Stack.Screen name="AuthView" component={AuthView} />
+            <Stack.Screen
+              name="AppView"
+              options={{
+                headerShown: false, // change this to `false`
+              }}
+              component={AppView}
+            />
+            <Stack.Screen name="Workout" component={WorkoutView} />
+            <Stack.Screen
+              name="AuthView"
+              options={{
+                headerShown: false, // change this to `false`
+              }}
+              component={AuthView}
+            />
             <Stack.Screen
               name="ResetPassword"
               component={ForgotPassEmailView}
             />
-            <Stack.Screen name="Enter Code" component={ForgotPassCodeView} />
+            <Stack.Screen
+              name="Enter Code"
+              headerMode="none"
+              component={ForgotPassCodeView}
+            />
             <Stack.Screen
               name="Enter Password"
               component={ForgotPassPassword}

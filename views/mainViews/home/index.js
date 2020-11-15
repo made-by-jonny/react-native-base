@@ -3,6 +3,7 @@ import { ScrollView, View, Text, Image } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import styled from "styled-components";
 import Button from "../../../components/generics/form/button";
+
 const Stack = createStackNavigator();
 
 const Heading = styled.Text`
@@ -22,7 +23,7 @@ const SecondaryHeading = styled.Text`
   color: #303242;
 `;
 
-const PrimaryCard = styled.View`
+const PrimaryCard = styled.TouchableHighlight`
   padding: 20px;
   margin: 0 30px 30px;
   background: #fff;
@@ -71,7 +72,8 @@ const Pill = styled.View`
 
 const ImageCard = styled.View``;
 
-const Index = () => {
+const Index = (props) => {
+  const { navigation } = props;
   return (
     <ScrollView
       style={{
@@ -86,42 +88,55 @@ const Index = () => {
       <Header direction="column" style={{ marginBottom: 20 }}>
         <SecondaryHeading>Today's Workout</SecondaryHeading>
       </Header>
-      <PrimaryCard>
-        <PrimaryCardContent style={{ flex: 1 }}>
-          <Pill>
-            <Text style={{ fontWeight: "bold", color: "#fff" }}>45min</Text>
-          </Pill>
-          <Pill>
-            <Text style={{ fontWeight: "bold", color: "#fff" }}>6:30pm</Text>
-          </Pill>
-        </PrimaryCardContent>
-        <PrimaryCardContent
-          style={{ flex: 3 }}
-          direction="column"
-          align="flex-start"
-        >
-          <Heading>Semi Private</Heading>
-          <Text style={{ fontWeight: "bold", color: "#a1aab7" }}>
-            Coach by: Kev Myers
-          </Text>
-          <Text
-            style={{
-              fontWeight: "bold",
-              color: "#a1aab7",
-            }}
+      <PrimaryCard
+        onPress={() => {
+          navigation.push("Workout");
+        }}
+      >
+        <>
+          <PrimaryCardContent style={{ flex: 1 }}>
+            <Pill>
+              <Text style={{ fontWeight: "bold", color: "#fff" }}>45min</Text>
+            </Pill>
+            <Pill>
+              <Text style={{ fontWeight: "bold", color: "#fff" }}>6:30pm</Text>
+            </Pill>
+          </PrimaryCardContent>
+          <PrimaryCardContent
+            style={{ flex: 3 }}
+            direction="column"
+            align="flex-start"
           >
-            Arm &amp; Shoulders
-          </Text>
-        </PrimaryCardContent>
-
-        <PrimaryCardContent>
-          <View style={{ flex: 1 }}>
-            <Text style={{ fontWeight: "bold", color: "#729191" }}>
-              Attending 6/8
+            <Heading>Semi Private</Heading>
+            <Text style={{ fontWeight: "bold", color: "#a1aab7" }}>
+              Coach by: Kev Myers
             </Text>
-          </View>
-          <Button variant="outline">See Workout</Button>
-        </PrimaryCardContent>
+            <Text
+              style={{
+                fontWeight: "bold",
+                color: "#a1aab7",
+              }}
+            >
+              Arm &amp; Shoulders
+            </Text>
+          </PrimaryCardContent>
+
+          <PrimaryCardContent>
+            <View style={{ flex: 1 }}>
+              <Text style={{ fontWeight: "bold", color: "#729191" }}>
+                Attending 6/8
+              </Text>
+            </View>
+            <Button
+              onPress={() => {
+                navigation.push("Workout");
+              }}
+              variant="outline"
+            >
+              See Workout
+            </Button>
+          </PrimaryCardContent>
+        </>
       </PrimaryCard>
       <Header direction="column" style={{ marginBottom: 10 }}>
         <SecondaryHeading>Latest Videos</SecondaryHeading>

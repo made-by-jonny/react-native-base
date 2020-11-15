@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text } from "react-native";
+import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
 import Profile from "../mainViews/profile";
@@ -96,13 +97,11 @@ function MyTabBar({ state, descriptors, navigation }) {
   );
 }
 
-function App() {
+function App({ navigation, route }) {
   return (
     <Tab.Navigator
+      lazy={false}
       tabBar={(props) => <MyTabBar {...props} />}
-      barStyle={{
-        backgroundColor: "#333366",
-      }}
       activeColor="#303242"
       inactiveColor="#ccc"
     >
@@ -110,6 +109,7 @@ function App() {
         name="home"
         component={Home}
         options={{
+          title: "Home",
           tabBarLabel: "Home",
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="home" color={color} size={28} />

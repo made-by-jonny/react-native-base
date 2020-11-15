@@ -15,7 +15,7 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 import Form from "../../../components/generics/form";
 import Input from "../../../components/generics/form/inputs";
 import { FontAwesome } from "@expo/vector-icons";
-
+import Breakdown from "./metricPage";
 const Stack = createStackNavigator();
 
 const weights = [
@@ -83,7 +83,7 @@ const Panel = styled.View`
   margin-bottom: 10px;
 `;
 
-const ListItem = styled.View`
+const ListItem = styled.TouchableHighlight`
   flex-direction: row;
   padding: 20px 0;
   align-items: center;
@@ -93,33 +93,35 @@ const ListItem = styled.View`
 
 const ImageCard = styled.View``;
 
-const Index = () => {
+const Index = ({ navigation }) => {
   return (
     <View style={{ backgroundColor: "#ebeff8" }}>
       <ScrollView>
         <Heading style={{ marginLeft: 30 }}>Weights</Heading>
         <Panel>
           {weights.map((item) => (
-            <ListItem>
-              <Text
-                style={{
-                  flex: 1,
-                  color: "#a1aab7",
-                  textTransform: "uppercase",
-                  fontWeight: "bold",
-                  fontSize: 20,
-                }}
-              >
-                {item.name}
-              </Text>
-              <FontAwesome
-                style={{
-                  marginLeft: 3,
-                }}
-                name="chevron-right"
-                size={20}
-                color="#CECDCE"
-              />
+            <ListItem onPress={() => navigation.push("Breakdown")}>
+              <>
+                <Text
+                  style={{
+                    flex: 1,
+                    color: "#a1aab7",
+                    textTransform: "uppercase",
+                    fontWeight: "bold",
+                    fontSize: 20,
+                  }}
+                >
+                  {item.name}
+                </Text>
+                <FontAwesome
+                  style={{
+                    marginLeft: 3,
+                  }}
+                  name="chevron-right"
+                  size={20}
+                  color="#CECDCE"
+                />
+              </>
             </ListItem>
           ))}
         </Panel>
@@ -141,6 +143,7 @@ const ProfileStack = () => (
     }}
   >
     <Stack.Screen name="Tracking" component={Index} />
+    <Stack.Screen name="Breakdown" component={Breakdown} />
   </Stack.Navigator>
 );
 

@@ -3,6 +3,8 @@ import { ScrollView, View, Text, Image } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import styled from "styled-components";
 import Button from "../../../components/generics/form/button";
+import { CardStyleInterpolators } from "@react-navigation/stack";
+
 const Stack = createStackNavigator();
 
 const Heading = styled.Text`
@@ -37,7 +39,7 @@ const TimeCard = styled.View`
   border-radius: 15px;
 `;
 
-const Pod = styled.View`
+const Pod = styled.TouchableHighlight`
   flex: 1;
   padding: 20px;
   border-radius: 15px;
@@ -82,7 +84,7 @@ const DatePodRegular = styled.Text``;
 
 const ImageCard = styled.View``;
 
-const Index = () => {
+const Index = ({ navigation }) => {
   return (
     <ScrollView
       style={{
@@ -142,7 +144,11 @@ const Index = () => {
               6:30pm
             </Text>
           </View>
-          <Pod>
+          <Pod
+            onPress={() => {
+              navigation.push("Workout");
+            }}
+          >
             <View style={{ flex: 3 }}>
               <Text style={{ fontWeight: "bold", color: "#a1aab7" }}>
                 SemiPrivate
@@ -177,7 +183,13 @@ const ScheduleStack = () => (
       },
     }}
   >
-    <Stack.Screen name="Home" component={Index} />
+    <Stack.Screen
+      name="Schedule"
+      component={Index}
+      options={{
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+      }}
+    />
   </Stack.Navigator>
 );
 

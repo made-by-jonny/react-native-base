@@ -14,6 +14,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import Form from "../../../components/generics/form";
 import Input from "../../../components/generics/form/inputs";
+import ContentView from "./content";
 
 const Stack = createStackNavigator();
 
@@ -71,9 +72,9 @@ const Pill = styled.View`
   margin-bottom: 10px;
 `;
 
-const ImageCard = styled.View``;
+const ImageCard = styled.TouchableHighlight``;
 
-const Index = () => {
+const Index = ({ navigation }) => {
   return (
     <View style={{ backgroundColor: "#ebeff8" }}>
       <ScrollView>
@@ -94,24 +95,29 @@ const Index = () => {
           showsHorizontalScrollIndicator={false}
         >
           {[...new Array(5)].map((item) => (
-            <ImageCard style={{ minWidth: 200, margin: 10 }}>
-              <Image
-                style={{
-                  width: 199,
-                  borderRadius: 15,
-                  height: 130,
-                }}
-                width={200}
-                height={50}
-                resizeMode="contain"
-                source={require("../../../assets/tempImage.jpg")}
-              />
-              <Details>
-                <DetailsText>Example title</DetailsText>
-                <Text style={{ width: 200, color: "#a1aab7" }}>
-                  Example of the description of the post.
-                </Text>
-              </Details>
+            <ImageCard
+              style={{ minWidth: 200, margin: 10 }}
+              onPress={() => navigation.navigate("ContentView")}
+            >
+              <>
+                <Image
+                  style={{
+                    width: 199,
+                    borderRadius: 15,
+                    height: 130,
+                  }}
+                  width={200}
+                  height={50}
+                  resizeMode="contain"
+                  source={require("../../../assets/tempImage.jpg")}
+                />
+                <Details>
+                  <DetailsText>Example title</DetailsText>
+                  <Text style={{ width: 200, color: "#a1aab7" }}>
+                    Example of the description of the post.
+                  </Text>
+                </Details>
+              </>
             </ImageCard>
           ))}
         </ScrollView>
@@ -124,24 +130,29 @@ const Index = () => {
           showsHorizontalScrollIndicator={false}
         >
           {[...new Array(5)].map((item) => (
-            <ImageCard style={{ minWidth: 200, margin: 10 }}>
-              <Image
-                style={{
-                  width: 199,
-                  borderRadius: 15,
-                  height: 130,
-                }}
-                width={200}
-                height={50}
-                resizeMode="contain"
-                source={require("../../../assets/tempImage.jpg")}
-              />
-              <Details>
-                <DetailsText>Example title</DetailsText>
-                <Text style={{ width: 200, color: "#a1aab7" }}>
-                  Example of the description of the post.
-                </Text>
-              </Details>
+            <ImageCard
+              style={{ minWidth: 200, margin: 10 }}
+              onPress={() => navigation.navigate("ContentView")}
+            >
+              <>
+                <Image
+                  style={{
+                    width: 199,
+                    borderRadius: 15,
+                    height: 130,
+                  }}
+                  width={200}
+                  height={50}
+                  resizeMode="contain"
+                  source={require("../../../assets/tempImage.jpg")}
+                />
+                <Details>
+                  <DetailsText>Example title</DetailsText>
+                  <Text style={{ width: 200, color: "#a1aab7" }}>
+                    Example of the description of the post.
+                  </Text>
+                </Details>
+              </>
             </ImageCard>
           ))}
         </ScrollView>
@@ -154,24 +165,29 @@ const Index = () => {
           showsHorizontalScrollIndicator={false}
         >
           {[...new Array(5)].map((item) => (
-            <ImageCard style={{ minWidth: 200, margin: 10 }}>
-              <Image
-                style={{
-                  width: 199,
-                  borderRadius: 15,
-                  height: 130,
-                }}
-                width={200}
-                height={50}
-                resizeMode="contain"
-                source={require("../../../assets/tempImage.jpg")}
-              />
-              <Details>
-                <DetailsText>Example title</DetailsText>
-                <Text style={{ width: 200, color: "#a1aab7" }}>
-                  Example of the description of the post.
-                </Text>
-              </Details>
+            <ImageCard
+              style={{ minWidth: 200, margin: 10 }}
+              onPress={() => navigation.navigate("ContentView")}
+            >
+              <>
+                <Image
+                  style={{
+                    width: 199,
+                    borderRadius: 15,
+                    height: 130,
+                  }}
+                  width={200}
+                  height={50}
+                  resizeMode="contain"
+                  source={require("../../../assets/tempImage.jpg")}
+                />
+                <Details>
+                  <DetailsText>Example title</DetailsText>
+                  <Text style={{ width: 200, color: "#a1aab7" }}>
+                    Example of the description of the post.
+                  </Text>
+                </Details>
+              </>
             </ImageCard>
           ))}
         </ScrollView>
@@ -200,24 +216,27 @@ const Index2 = () => {
               padding: 10,
               minWidth: 150,
             }}
+            onPress={() => navigation.navigate("ContentView")}
           >
-            <Image
-              style={{
-                width: 199,
-                borderRadius: 15,
-                height: 130,
-              }}
-              width={200}
-              height={50}
-              resizeMode="contain"
-              source={require("../../../assets/tempImage.jpg")}
-            />
-            <Details style={{ justifyContent: "center" }}>
-              <DetailsText size="24px">Example title</DetailsText>
-              <Text style={{ width: 200, color: "#a1aab7" }}>
-                Example of the description of the post.
-              </Text>
-            </Details>
+            <>
+              <Image
+                style={{
+                  width: 199,
+                  borderRadius: 15,
+                  height: 130,
+                }}
+                width={200}
+                height={50}
+                resizeMode="contain"
+                source={require("../../../assets/tempImage.jpg")}
+              />
+              <Details style={{ justifyContent: "center" }}>
+                <DetailsText size="24px">Example title</DetailsText>
+                <Text style={{ width: 200, color: "#a1aab7" }}>
+                  Example of the description of the post.
+                </Text>
+              </Details>
+            </>
           </ImageCard>
         ))}
       </ScrollView>
@@ -268,7 +287,8 @@ const ProfileStack = () => (
       },
     }}
   >
-    <Stack.Screen name="Learning" component={MyTabs} />
+    <Stack.Screen name="Learn" component={MyTabs} />
+    <Stack.Screen name="ContentView" component={ContentView} />
   </Stack.Navigator>
 );
 
