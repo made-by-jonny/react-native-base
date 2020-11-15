@@ -49,7 +49,7 @@ const Index = ({ navigation }) => {
       </Header>
       <Calender />
       {[1, 2, 3, 4].map((item) => (
-        <TimeCard />
+        <TimeCard onPress={() => navigation.navigate("Workout")} />
       ))}
     </ScrollView>
   );

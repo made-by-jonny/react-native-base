@@ -9,7 +9,8 @@ import {
 } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import styled from "styled-components";
-
+import Pill from "../../../../components/pill";
+import ListItem from "../../../../components/listItem";
 const part1 = [
   {
     name: "Back Squat",
@@ -65,40 +66,6 @@ const SubHeading = styled.Text`
   font-size: 20px;
   color: #a1aab7;
 `;
-const SecondaryHeading = styled.Text`
-  font-weight: bold;
-  font-size: 20px;
-  color: #5c7778;
-`;
-
-const PrimaryCard = styled.View`
-  margin: 10px;
-  background: #b7dcdd;
-  border-radius: 12px;
-`;
-
-const Header = styled.View`
-  padding: 0 30px;
-  justify-content: center;
-  flex-direction: ${(props) => props.direction || "row"};
-`;
-const Footer = styled.View`
-  padding: 20px;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-`;
-const Details = styled.View`
-  padding: 0 10px;
-  border-bottom-right-radius: 15px;
-  border-bottom-left-radius: 15px;
-`;
-
-const DetailsText = styled.Text`
-  font-weight: bold;
-  font-size: ${(props) => props.size || "14px"};
-  color: #303242;
-`;
 
 const Panel = styled.View`
   padding: 10px;
@@ -108,71 +75,82 @@ const Panel = styled.View`
   margin-bottom: 10px;
 `;
 
-const ListItem = styled.View`
-  flex-direction: column;
-  padding: 20px 0;
-  border-bottom-width: 1px;
-  border-bottom-color: #f1f1f1;
-`;
-
-const ImageCard = styled.View``;
-
-const WorkoutView = () => {
+const WorkoutView = (props) => {
+  const { navigation } = props;
   return (
     <View style={{ backgroundColor: "#ebeff8" }}>
       <ScrollView>
-        <Heading style={{ marginLeft: 30 }}>Workout Name</Heading>
-        <SubHeading>Arms &amp; Shoulders</SubHeading>
+        <View style={{ alignItems: "center" }}>
+          <Heading>Arms &amp; Shoulders</Heading>
+          <SubHeading>Giant Sets</SubHeading>
+        </View>
+        <View
+          style={{
+            marginTop: 20,
+            flexDirection: "row",
+            justifyContent: "center",
+          }}
+        >
+          <Pill>6:30pm</Pill>
+          <Pill>45 min</Pill>
+        </View>
         <Panel>
           <SubHeading>Workout: Part A</SubHeading>
           <Text>5 rounds</Text>
           {part1.map((item) => (
-            <ListItem>
-              <Text
+            <ListItem onPress={() => navigation.navigate("Breakdown")}>
+              <View
                 style={{
                   flex: 1,
-                  color: "#303242",
-                  fontWeight: "bold",
-                  fontSize: 20,
                 }}
               >
-                {item.name}
-              </Text>
-              <View style={{ flexDirection: "row" }}>
                 <Text
                   style={{
-                    color: "#a1aab7",
-                    textTransform: "uppercase",
+                    flex: 1,
+                    color: "#303242",
                     fontWeight: "bold",
-                    marginRight: 10,
-                    fontSize: 15,
+                    fontSize: 20,
+                    marginBottom: 2,
                   }}
                 >
-                  Reps: {item.reps}
+                  {item.name}
                 </Text>
-                <Text
-                  style={{
-                    color: "#a1aab7",
-                    textTransform: "uppercase",
-                    fontWeight: "bold",
-                    marginRight: 10,
-                    fontSize: 15,
-                  }}
-                >
-                  Tempo: {item.tempo.up} / {item.tempo.down}
-                </Text>
-                <Text
-                  style={{
-                    color: "#a1aab7",
-                    textTransform: "uppercase",
-                    fontWeight: "bold",
-                    marginRight: 10,
-                    fontSize: 15,
-                  }}
-                >
-                  Pause: {item.pause.top} / {item.pause.middle} /
-                  {item.pause.bottom}
-                </Text>
+                <View style={{ flexDirection: "row" }}>
+                  <Text
+                    style={{
+                      color: "#a1aab7",
+                      textTransform: "uppercase",
+                      fontWeight: "bold",
+                      marginRight: 10,
+                      fontSize: 12,
+                    }}
+                  >
+                    Reps: {item.reps}
+                  </Text>
+                  <Text
+                    style={{
+                      color: "#a1aab7",
+                      textTransform: "uppercase",
+                      fontWeight: "bold",
+                      marginRight: 10,
+                      fontSize: 12,
+                    }}
+                  >
+                    Tempo: {item.tempo.up} / {item.tempo.down}
+                  </Text>
+                  <Text
+                    style={{
+                      color: "#a1aab7",
+                      textTransform: "uppercase",
+                      fontWeight: "bold",
+                      marginRight: 10,
+                      fontSize: 12,
+                    }}
+                  >
+                    Pause: {item.pause.top} / {item.pause.middle} /{" "}
+                    {item.pause.bottom}
+                  </Text>
+                </View>
               </View>
             </ListItem>
           ))}
@@ -181,52 +159,59 @@ const WorkoutView = () => {
           <SubHeading>Workout: Part B</SubHeading>
           <Text>5 rounds</Text>
           {part2.map((item) => (
-            <ListItem>
-              <Text
+            <ListItem onPress={() => navigation.navigate("Breakdown")}>
+              <View
                 style={{
                   flex: 1,
-                  color: "#303242",
-                  fontWeight: "bold",
-                  fontSize: 20,
                 }}
               >
-                {item.name}
-              </Text>
-              <View style={{ flexDirection: "row" }}>
                 <Text
                   style={{
-                    color: "#a1aab7",
-                    textTransform: "uppercase",
+                    flex: 1,
+                    color: "#303242",
                     fontWeight: "bold",
-                    marginRight: 10,
-                    fontSize: 12,
+                    fontSize: 20,
+                    marginBottom: 2,
                   }}
                 >
-                  Reps: {item.reps}
+                  {item.name}
                 </Text>
-                <Text
-                  style={{
-                    color: "#a1aab7",
-                    textTransform: "uppercase",
-                    fontWeight: "bold",
-                    marginRight: 10,
-                    fontSize: 12,
-                  }}
-                >
-                  Tempo: {item.tempo.up} / {item.tempo.down}
-                </Text>
-                <Text
-                  style={{
-                    color: "#a1aab7",
-                    textTransform: "uppercase",
-                    fontWeight: "bold",
-                    marginRight: 10,
-                    fontSize: 12,
-                  }}
-                >
-                  Pause: {item.pause.top} / {item.pause.middle} /
-                  {item.pause.bottom}
-                </Text>
+                <View style={{ flexDirection: "row" }}>
+                  <Text
+                    style={{
+                      color: "#a1aab7",
+                      textTransform: "uppercase",
+                      fontWeight: "bold",
+                      marginRight: 10,
+                      fontSize: 12,
+                    }}
+                  >
+                    Reps: {item.reps}
+                  </Text>
+                  <Text
+                    style={{
+                      color: "#a1aab7",
+                      textTransform: "uppercase",
+                      fontWeight: "bold",
+                      marginRight: 10,
+                      fontSize: 12,
+                    }}
+                  >
+                    Tempo: {item.tempo.up} / {item.tempo.down}
+                  </Text>
+                  <Text
+                    style={{
+                      color: "#a1aab7",
+                      textTransform: "uppercase",
+                      fontWeight: "bold",
+                      marginRight: 10,
+                      fontSize: 12,
+                    }}
+                  >
+                    Pause: {item.pause.top} / {item.pause.middle} /{" "}
+                    {item.pause.bottom}
+                  </Text>
+                </View>
               </View>
             </ListItem>
           ))}
@@ -235,52 +220,68 @@ const WorkoutView = () => {
           <SubHeading>Workout: Part C</SubHeading>
           <Text>5 rounds</Text>
           {part3.map((item) => (
-            <ListItem>
-              <Text
+            <ListItem
+              onPress={() =>
+                navigation.navigate("AppView", {
+                  screen: "Metrics",
+                  params: {
+                    screen: "Breakdown",
+                  },
+                })
+              }
+            >
+              <View
                 style={{
                   flex: 1,
-                  color: "#303242",
-                  fontWeight: "bold",
-                  fontSize: 20,
                 }}
               >
-                {item.name}
-              </Text>
-              <View style={{ flexDirection: "row" }}>
                 <Text
                   style={{
-                    color: "#a1aab7",
-                    textTransform: "uppercase",
+                    flex: 1,
+                    color: "#303242",
                     fontWeight: "bold",
-                    marginRight: 10,
-                    fontSize: 12,
+                    fontSize: 20,
+                    marginBottom: 2,
                   }}
                 >
-                  Reps: {item.reps}
+                  {item.name}
                 </Text>
-                <Text
-                  style={{
-                    color: "#a1aab7",
-                    textTransform: "uppercase",
-                    fontWeight: "bold",
-                    marginRight: 10,
-                    fontSize: 12,
-                  }}
-                >
-                  Tempo: {item.tempo.up} / {item.tempo.down}
-                </Text>
-                <Text
-                  style={{
-                    color: "#a1aab7",
-                    textTransform: "uppercase",
-                    fontWeight: "bold",
-                    marginRight: 10,
-                    fontSize: 12,
-                  }}
-                >
-                  Pause: {item.pause.top} / {item.pause.middle} /
-                  {item.pause.bottom}
-                </Text>
+                <View style={{ flexDirection: "row" }}>
+                  <Text
+                    style={{
+                      color: "#a1aab7",
+                      textTransform: "uppercase",
+                      fontWeight: "bold",
+                      marginRight: 10,
+                      fontSize: 12,
+                    }}
+                  >
+                    Reps: {item.reps}
+                  </Text>
+                  <Text
+                    style={{
+                      color: "#a1aab7",
+                      textTransform: "uppercase",
+                      fontWeight: "bold",
+                      marginRight: 10,
+                      fontSize: 12,
+                    }}
+                  >
+                    Tempo: {item.tempo.up} / {item.tempo.down}
+                  </Text>
+                  <Text
+                    style={{
+                      color: "#a1aab7",
+                      textTransform: "uppercase",
+                      fontWeight: "bold",
+                      marginRight: 10,
+                      fontSize: 12,
+                    }}
+                  >
+                    Pause: {item.pause.top} / {item.pause.middle} /{" "}
+                    {item.pause.bottom}
+                  </Text>
+                </View>
               </View>
             </ListItem>
           ))}

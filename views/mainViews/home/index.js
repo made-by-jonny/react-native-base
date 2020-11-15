@@ -33,7 +33,7 @@ const Index = (props) => {
       <Header direction="column" style={{ marginBottom: 20 }}>
         <SecondaryHeading>Today's Workout</SecondaryHeading>
       </Header>
-      <WorkoutCard />
+      <WorkoutCard onPress={() => navigation.navigate("Workout")} />
       <Header direction="column" style={{ marginBottom: 10 }}>
         <SecondaryHeading>Latest Videos</SecondaryHeading>
       </Header>

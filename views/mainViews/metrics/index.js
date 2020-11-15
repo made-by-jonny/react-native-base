@@ -69,7 +69,6 @@ const ProfileStack = () => (
     }}
   >
     <Stack.Screen name="Tracking" component={Index} />
-    <Stack.Screen name="Breakdown" component={Breakdown} />
   </Stack.Navigator>
 );
 

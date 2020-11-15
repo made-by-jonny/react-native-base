@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/native";
 
-const Pill = styled.Text`
+const PillBase = styled.Text`
   padding: 5px 10px;
   border-radius: 100px;
   align-items: center;

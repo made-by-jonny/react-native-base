@@ -149,7 +149,7 @@ function App({ navigation, route }) {
         name="learn"
         component={Learn}
         options={{
-          tabBarLabel: "Learn",
+          tabBarLabel: "Skill",
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="school" color={color} size={28} />
           ),
